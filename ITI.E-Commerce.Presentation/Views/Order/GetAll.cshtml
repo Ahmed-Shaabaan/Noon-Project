@@ -1,0 +1,38 @@
+﻿@model List<Order>
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+
+
+<title>@ViewBag.Title</title>
+@foreach (var ord in @Model.ToList<Order>())
+{
+    <div class="container-fluid mb-5 p-3 bg-secondary">
+
+
+
+        <div class="card w-100">
+            <div class="card-body">
+                <h5>Order ID      : @ord.ID</h5><hr>
+                <h5>Customer Name : @ord.Customers.FirstName @ord.Customers.LastName</h5><hr>
+                <h5>Customer ID   : @ord.Customers.Id</h5><hr>
+                <h5>Shipper Name  : @ord.Shippers</h5><hr>
+                <h5>Status        : @ord.Status.ToString()</h5><hr>
+                <h5>AddressID     : @ord.AddressID <br> AddressState : @ord.ShippingAddress.State  <br> AddressCity : @ord.ShippingAddress.City </h5>
+                <h5>ShippedDate   : @ord.ShippedDate</h5><hr>
+                <h5>Total Price   : @ord.TotalPrice</h5><hr>
+                <div class="btn-group-vertical" style="border-style:none" role="group" aria-label="Vertical button group">
+                    <a class="btn btn-warning mb-1" asp-controller="Order" asp-action="Edit" asp-route-id="@ord.ID">@localizer["Update Order"]</a><br>
+                    <a class="btn btn-danger mb-1" asp-controller="Order" asp-action="ConfirmDelete" asp-route-id="@ord.ID">@localizer["Delete"]</a>
+                </div>
+               
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+}

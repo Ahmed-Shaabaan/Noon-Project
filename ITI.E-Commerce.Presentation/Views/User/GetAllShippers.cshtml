@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Customer>
+@{
+    Layout = "_layout";
+}
+
+<title>@ViewBag.Title</title>
+
+<table class="table">
+    <thead class="bg-light-primary fw-bold text-center border ">
+        <tr>
+
+            <th scope="col">User Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Delete</th>
+            @*<th scope="col">Update</th>*@
+            <th scope="col">Update Role</th>
+        </tr>
+    </thead>
+    <tbody class="bg-light-primary text-center">
+        @foreach (var item in Model.ToList<Customer>())
+        {
+            <tr>
+                <td scope="row"> @item.UserName </td>
+                <td>@item.Email </td>
+                <td>
+                    <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal_@item.Id">Delete</a>
+                </td>
+                @*<td>
+            <a class="btn btn-success" asp-controller="User" asp-action="UpdateCustomer"
+            >Update</a>
+            </td>*@
+                <td>
+                    <a class="btn btn-info" asp-controller="User" asp-action="UpdateRole"
+                   asp-route-id="@item.Id">Update Role</a>
+                </td>
+                <div class="modal fade" id="exampleModal_@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you Sure you want to Delete This Member ..?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a asp-controller="User" asp-action="Delete"
+                               asp-route-id="@item.Id" class="btn btn-danger">
+                                    Confirm Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tr>
+        }
+
+    </tbody>
+</table>

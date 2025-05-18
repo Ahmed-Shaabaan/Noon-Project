@@ -1,0 +1,44 @@
+﻿
+@model BrandCreateModel;
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+
+<title>@ViewBag.Title</title>
+<div class="alert alert-success" role="alert" style="display:none;" id="Succses">
+    This is a success alert with <a href="/Home/Index" class="alert-link">@localizer["Home"]</a>. Give it a click if you like.
+</div>
+
+<form data-ajax="true" data-ajax-complete="AlertDone" data-ajax-loading="#loader" method="post" asp-controller="Brand" asp-action="AddNewBrand" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div>
+        <div class="form-group">
+            <label asp-for="Name">@localizer["Name"]</label>
+            <input asp-for="Name" name="Name" class="form-control" />
+            <span asp-validation-for="Name" class="validation"></span>
+
+        </div>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="Image">@localizer["Image"]</label>
+        <input asp-for="Image" multiple class="form-control" />
+        <span asp-validation-for="Image" class="validation text-danger" ></span>
+
+    </div>
+    <input type="submit" value="@localizer["Add"]" class="btn btn-primary" />
+</form>
+<div>
+    <img id="loader" src="~/wwwroot/Images/uploadloader.gif" style="display:none; width:100px" />
+</div>
+
+<script>
+    function AlertDone(event) {
+            document.getElementById("Succses").style.display = "block";
+        }</script>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

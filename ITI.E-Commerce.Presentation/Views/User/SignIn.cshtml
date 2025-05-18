@@ -1,0 +1,30 @@
+﻿@model LoginModel
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer localizer
+
+<title>@ViewBag.Title</title>
+
+<h1>@localizer["Login Page"]</h1>
+
+<form method="post" asp-action="SignIn" asp-controller="User">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="form-group">
+        <label asp-for="UserName">@localizer["UserName"]</label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">@localizer["Password"]</label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RememberMe">@localizer["RememberMe"]</label>
+        <input asp-for="RememberMe" />
+        <span asp-validation-for="RememberMe"></span>
+    </div>
+    <input asp-for="ReturnUrl" hidden />
+    <input class="btn btn-primary" value="@localizer["Sign In"]" type="submit"/>
+</form>

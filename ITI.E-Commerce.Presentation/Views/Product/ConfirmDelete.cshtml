@@ -1,0 +1,9 @@
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+<h1>@localizer["Are You Sure To Delete This Product :"] @Model.Name</h1>
+<title>@ViewBag.Title</title>
+<a class="btn  btn-danger" asp-controller="Product" asp-action="Delete" asp-route-id="@Model.Id">@localizer["Yes"]</a>
+
+<a class="btn btn-primary" asp-controller="product" asp-action="GetAllProduct">@localizer["Cancel"]</a>

@@ -1,0 +1,124 @@
+﻿@{
+    Layout = "_layout";
+}
+@*@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@model OrderCreateModel
+<h1>@localizer["Add Order"]</h1>*@
+@*<form enctype="multipart/form-data" asp-controller="Order" asp-action="Add" method="post">
+    <div asp-validation-summary="ModelOnly"></div>*@
+    @*<label>CustomerID</label>*@
+@*    <div class="form-group">
+        <label asp-for="CustomerID"></label>
+        <select asp-for="CustomerID" class="form-control js-example-basic-single" asp-items="ViewBag.AllCustomers">
+        </select>
+        <span asp-validation-for="CustomerID" class="validation"></span>
+    </div>*@
+
+    @*<label>ShipperID</label>*@
+
+ @*   <div class="form-group">
+        <label asp-for="ShipperID"></label>
+        <select asp-for="ShipperID" class="form-control js-example-basic-single" asp-items="ViewBag.AllShippers">
+        </select>
+        <span asp-validation-for="ShipperID" class="validation"></span>
+
+    </div>
+*@
+   @* <div class="form-group">
+        <label asp-for="AddressID"></label>
+        <select asp-for="AddressID" class="form-control js-example-basic-single" asp-items="ViewBag.AllAddresses">
+        </select>
+        <span asp-validation-for="AddressID" class="validation"></span>
+    </div>*@
+
+    @*<label> OrderDate</label>*@
+   @* <div class="form-group">
+        <label asp-for="OrderDate"></label>
+        <input asp-for="OrderDate" class="form-control" />
+        <span asp-validation-for="OrderDate" class="validation"></span>
+    </div>*@
+
+    @*<label >ShippedDate</label>*@
+   @* <div class="form-group">
+        <label asp-for="ShippedDate"></label>
+        <input asp-for="ShippedDate" class="form-control" />
+        <span asp-validation-for="ShippedDate"></span>
+    </div>*@
+    @*Start Address*@
+@*    <div class="form-group">
+        <label asp-for="ShippingAddress.City"></label>
+        <input asp-for="ShippingAddress.City" class="form-control" />
+        <span asp-validation-for="ShippingAddress.City" class="validation"></span>
+    </div>   
+    <div class="form-group">
+        <label asp-for="ShippingAddress.Street"></label>
+        <input asp-for="ShippingAddress.Street" class="form-control" />
+        <span asp-validation-for="ShippingAddress.Street" class="validation"></span>
+    </div>   
+
+    <div class="form-group">
+        <label asp-for="ShippingAddress.State"></label>
+        <input asp-for="ShippingAddress.State" class="form-control" />
+        <span asp-validation-for="ShippingAddress.State" class="validation"></span>
+    </div>      
+    <div class="form-group">
+        <label asp-for="ShippingAddress.Zipcode"></label>
+        <input asp-for="ShippingAddress.Zipcode" class="form-control" />
+        <span asp-validation-for="ShippingAddress.Zipcode" class="validation"></span>
+    </div>*@
+
+    @*End Address*@
+    @*Start OrderDetails*@
+    @*    @foreach (var ordDetails in Model.orderDetails)
+    {
+
+    }*@
+@*    <div class="form-group">
+        <label asp-for="@Model.orderDetails"></label>
+        <input asp-for="@Model.orderDetails" class="form-control" />
+        <span asp-validation-for="@Model.orderDetails" class="validation"></span>
+    </div>*@
+
+    @*End OrderDetails*@
+
+
+
+
+
+
+    @*<label>DeliveryCost</label>*@
+    @*<div class="form-group">
+        <label asp-for="DeliveryCost"></label>
+        <input asp-for="DeliveryCost" class="form-control" />
+        <span asp-validation-for="DeliveryCost"></span>
+    </div>*@
+
+    @*<label >TotalPrice</label>*@
+    @*<div class="form-group">
+        <label asp-for="TotalPrice"></label>
+        <input asp-for="TotalPrice" class="form-control" />
+        <span asp-validation-for="TotalPrice"></span>
+
+    </div>
+
+
+    <input type="submit" value="@localizer["Add"]" class="btn btn-primary" />
+</form>*@
+@*@section Scripts
+    {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-single').select2();
+        });
+        function AlertDone(event) {
+            document.getElementById("Succses").style.display = "block";
+        }</script>
+
+}*@
+

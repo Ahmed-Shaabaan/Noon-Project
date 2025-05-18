@@ -1,0 +1,111 @@
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+    
+@using ITI.E_Commerce.Models
+@model IPagedList<Category>
+<title>@ViewBag.Title</title>
+<link rel="stylesheet" href="~/wwwroot/css/PagedList.css"/>
+ @foreach (var item in Model.ToList<Category>())
+{
+   <table class="table-light" style="width:4rem;">
+            <tbody>
+            <div class="card" style="width:20rem ">
+           <img class="card-img-top " src="~/wwwroot/CategoryImage/@item.Image" salt="" width="50%" height="50%">
+           <div class="card-body text-center">
+                <h4 class="card-title">
+                        <strong>
+                            @item.Name
+                        </strong>
+                    </h4>
+                    <div class="btn-group-vertical" style="border-style:none">
+                        <a class="btn btn-info text-uppercase mb-1" asp-action="Update" asp-controller="Category" asp-route-id="@item.Id">@localizer["Update"]</a><br><br>
+                        <a class="btn btn-danger text-uppercase" asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id">@localizer["Delete"]</a>
+                    </div>
+              </div>
+          </div>
+            </tbody>
+  </table>
+}
+ @Html.PagedListPager(Model, pageIndex => Url.Action("GetAll", new { pageIndex  }))
+@*@model List<Category>
+
+@foreach (var item in Model)
+    {
+
+    <div class="order my-3 ">
+        <div class="row">
+            <div class="col-lg-4">
+             
+            </div>
+            <div class="col-lg-4" id="Categoryid">
+
+                <div> Category: @item.Name </div>
+          
+            </div>
+            <div class="col-lg-4">
+                <div class="d-sm-flex align-items-sm-start">
+                    <a class="btn btn-primary text-uppercase" asp-action="Update" asp-controller="Category" asp-route-id="@item.Id">Edite</a>
+                    <a class="btn btn-denger text-uppercase" asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id">Delete</a>
+
+                  
+                </div>
+
+            </div>
+        </div>
+        <hr />
+
+    </div>
+    }*@
+
+
+
+
+@*<link rel="stylesheet" href="~/wwwroot/css/AllBrand.css" asp-append-version="true" />*@
+<!--For Page-->
+<!--For Row containing all card-->
+@*<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-6 col-sm-12 ">
+            <div class="card card-cascade card-ecommerce wider shadow mb-5 ">
+
+                <!--Card image-->
+                <div class="view view-cascade overlay text-center">
+                    <img class="card-img-top img-fluid" src="~/wwwroot/CategoryImage/@item.Image" salt="">
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+
+                <!--Card Body-->
+                <div class="card-body card-body-cascade text-center">
+
+                    <!--Card Title-->
+                    <h4 class="card-title">
+                        <strong>
+                            @item.Name
+                        </strong>
+                    </h4>
+                    <!--Card footer-->
+                    <div class="card-footer">
+                        <a class="btn btn-info text-uppercase" asp-action="Update" asp-controller="Category" asp-route-id="@item.Id">@localizer["Update"]</a>
+
+                        <a class="btn btn-danger text-uppercase" asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id">@localizer["Delete"]</a>
+                    </div>
+
+                 
+
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+ 
+*@

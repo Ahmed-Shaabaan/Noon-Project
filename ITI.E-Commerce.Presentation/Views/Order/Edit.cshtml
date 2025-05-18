@@ -1,0 +1,51 @@
+﻿@model Order
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+<form enctype="multipart/form-data" asp-controller="Order" asp-action="Edit" method="post" asp-route-id="@ViewBag.Order.ID">
+
+
+@*    <div class="form-group">
+        <label asp-for="CustomerID"></label>
+        <select asp-for="CustomerID" class="form-control js-example-basic-single" asp-items="ViewBag.AllCustomers">
+        </select>
+        <span asp-validation-for="CustomerID" class="validation"></span>
+    </div>*@
+
+    <div class="form-group">
+        <label >Shipper Name </label>
+        <select asp-for="ShipperID" class="form-control js-example-basic-single" asp-items="ViewBag.AllShippers">
+        </select>
+        <span asp-validation-for="ShipperID" class="validation"></span>
+    </div>
+       
+    <div class="form-group">
+        <label asp-for="AddressID"></label>
+        <select asp-for="AddressID" class="form-control js-example-basic-single" asp-items="ViewBag.AllAddresses">
+        </select>
+        <span asp-validation-for="AddressID" class="validation"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Status"></label>
+        <select asp-for="Status" class="form-control js-example-basic-single" asp-items="Html.GetEnumSelectList<OrderStatues>()">
+        </select>
+        <span asp-validation-for="CustomerID" class="validation"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="ShippedDate"></label>
+        <input asp-for="ShippedDate" class="form-control" value="@ViewBag.Order.ShippedDate" />
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="DeliveryCost"></label>
+        <input asp-for="DeliveryCost" class="form-control" value="@ViewBag.Order.DeliveryCost" />
+    </div>
+
+
+    <input type="submit" value="@localizer["Update"]" class="btn btn-success" />
+</form>

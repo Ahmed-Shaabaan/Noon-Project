@@ -1,0 +1,36 @@
+﻿@using ITI.E_Commerce.Presentation.Models.CategoryModel
+@model BrandCreateModel
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    Layout = "_layout";
+}
+<title>@ViewBag.Title</title>
+
+<div id="alert" class="alert alert-info" role="alert" style="display:none;">
+    Confim Change
+</div>
+
+<div style="display:none;" id="load">
+    Please Waiting
+    <img src="~/wwwroot/Images/uploadloader.gif" style="width:100px;height:100px;" />
+</div>
+<form data-ajax-complete="show_Message"
+      data-ajax-loading="#load" data-ajax="true"
+      method="post" asp-controller="Brand" asp-action="Update" asp-route-id="@ViewBag.Brand.Id">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" value="@ViewBag.Brand.Name" class="form-control" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <input type="submit" value="@localizer["Submit"]" class="btn btn-primary" />
+</form>
+<script>
+    function show_Message() {
+        document.getElementById("alert").style.display = "block";
+    }
+</script>

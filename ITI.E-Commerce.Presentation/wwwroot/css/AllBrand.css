@@ -1,0 +1,34 @@
+﻿ul {
+    list-style-type: none;
+    margin-left: 37%;
+    padding: 0;
+}
+
+.rating {
+    margin-left: 37%;
+}
+
+.fa {
+    color: #52a35e;
+}
+
+.card-img-top {
+    width: 90%;
+}
+
+.card {
+    width: 95%;
+    padding: 0px;
+    margin-left: 2%;
+}
+
+.card-footer {
+    background-color: #52a35e;
+    font-weight: 700;
+}
+/*
+.price {
+    color: #ff4517;
+    font-weight: 600;
+}
+*/

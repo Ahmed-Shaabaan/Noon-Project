@@ -1,0 +1,40 @@
+﻿@model Product
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+
+<title>@ViewBag.Title</title>
+
+<style>
+ h2{
+     display:inline-block
+ }  
+ h1{
+     display:inline-block
+ }
+ h5{
+      display:inline-block
+ }
+</style>
+<div class="row">
+<div class="col-6">
+          <img src="~/wwwroot/ProductImages/@Model.ProductImages.FirstOrDefault().Path" class="card-img-top" style ="width:70%" />
+</div>
+<div class="col-6">
+<h1>@Model.Name</h1>
+<hr />
+<h2>@localizer["Price:"]</h2>
+<h1>@Model.UnitPrice</h1><br />
+<h2>@localizer["Discount:"]</h2>
+<h5>@Model.Discount</h5>
+<hr/>
+<h5>@localizer["Color:"]</h5>
+<strong>@Model.Color</strong><br />
+<h5>@localizer["Size:"]</h5>
+<strong>@Model.Size</strong><br />
+<h5>@localizer["About this item"]</h5>
+<p>@Model.Description</p>
+
+</div>
+</div>

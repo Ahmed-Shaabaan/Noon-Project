@@ -1,0 +1,115 @@
+﻿@{
+    Layout = "_layout";
+}
+<style>
+    .field-validation-error{
+          color:red;
+      }
+</style>
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@model ProductCreateModel
+<title>@ViewBag.Title</title>
+<div class="alert alert-success" role="alert" style="display:none;" id="Succses">
+   @localizer[" This is a success alert with "]<a href="/Product/GetAllProduct" class="alert-link">@localizer["Home"]</a>. @localizer["Give it a click if you like."]
+</div>
+<h1>@localizer["Add Product"]</h1>
+<form enctype="multipart/form-data" asp-controller="Product" asp-action="Add" method="post" data-ajax="true" data-ajax-complete="AlertDone" data-ajax-loading="#loader">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="form-group">
+        <label asp-for="Name">@localizer["Name"]</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="validation"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UnitPrice">@localizer["UnitPrice"]</label>
+        <input asp-for="UnitPrice" class="form-control" />
+        <span asp-validation-for="UnitPrice" class="validation"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Quantity">@localizer["Quantity"]</label>
+        <input asp-for="Quantity" class="form-control" />
+        <span asp-validation-for="Quantity" class="validation"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description">@localizer["Description"]</label>
+        <textarea asp-for="Description" class="form-control" rows="4">
+         </textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div class="form-group">
+
+        <label asp-for="NewPrece">@localizer["NewPrece"]</label>
+        <input asp-for="NewPrece" class="form-control" value="0" />
+
+    </div>
+
+
+
+    <div class="form-group">
+        <label asp-for="Size">@localizer["Size"]</label>
+        <input asp-for="Size" class="form-control" />
+        <span asp-validation-for="Size" class="validation"></span>
+    </div>
+
+
+    <div class="form-group">
+
+        <label asp-for="BrandID">@localizer["BrandID"]</label>
+        <select asp-for="BrandID" class="form-control js-example-basic-single" asp-items="ViewBag.Brand">
+        </select>
+        <span asp-validation-for="BrandID" class="validation"></span>
+    </div>
+
+    <div class="form-group">
+
+        <label asp-for="CategoryID">@localizer["CategoryID"]</label>
+        <select asp-for="CategoryID" asp-items="ViewBag.Category" class="form-control js-example-basic-single " id="id_label_single" data-live-search="true" data-live-search-style="startsWith">
+        </select>
+        <span asp-validation-for="CategoryID" class="validation"></span>
+
+    </div>
+
+
+
+    <div class="form-group">
+        <label asp-for="Images">@localizer["Images"]</label>
+        <input asp-for="Images" class="form-control" />
+        <span asp-validation-for="Images"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Color">@localizer["Color"]</label>
+        <input asp-for="Color" class="form-control" />
+        <span asp-validation-for="Color" class="validation"></span>
+    </div>
+    <br /><br />
+    <input type="submit" value="@localizer["Add"]" class="btn btn-primary" />
+</form>
+<div>
+    <img id="loader" src="~/wwwroot/Images/uploadloader.gif" style="display:none; width:100px" />
+</div>
+
+
+@section Scripts
+{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+   @* <script>$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+    function AlertDone(event) {
+        document.getElementById("Succses").style.display = "block";
+    }</script>
+*@
+<script>
+function AlertDone(event) {
+        document.getElementById("Succses").style.display = "block";
+    }</script>
+}

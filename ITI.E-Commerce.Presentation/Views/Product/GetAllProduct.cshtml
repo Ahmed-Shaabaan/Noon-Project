@@ -1,0 +1,77 @@
+﻿@model IPagedList<Product>
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+<head>
+    <title>@ViewBag.Title</title>
+
+<style>
+    h4{
+        display:inline-block;
+        color:darkolivegreen
+    }
+    h5{
+    display:inline-block
+        }
+</style>
+<link rel="stylesheet" href="~/wwwroot/css/PagedList.css"/>
+</head>
+<body>
+@*<form method="get" asp-action="Search" asp-controller="Product"  asp-route-id="">
+    <div class="input-group">
+        <input class="form-control" type="search" name="ProductName" />
+        <button class=" btn btn-outline-success my2-sm-0" type="submit">@localizer["Search"]</button>
+
+    </div>
+
+</form>*@
+
+  @foreach(var pro in @Model.ToList<Product>())
+        {
+            <table class="table-light" style="width:4rem;">
+            <tbody>
+            <div class="card" style="width:20rem ">
+        
+          
+              <img src="~/wwwroot/ProductImages/@pro.ProductImages.FirstOrDefault().Path" class="card-img-top "  width="50%" height="50%"/>
+         
+            
+            <div class="card-body">
+            <h4>@localizer["Product Name:"]</h4>
+           <h5 class="card-title">@pro.Name</h5>
+           <h4>@localizer["Quantity:"]</h4>
+           <h5 >@pro.Quantity</h5>
+           <h4>@localizer["UnitPrice:"]</h4>
+           <h5 >@pro.UnitPrice</h5>
+           <h4>@localizer["Color:"]</h4>
+           <h5>@pro.Color</h5><br>
+           <h4>@localizer["Size:"]</h4>
+           <h5>@pro.Size</h5>
+                        <div class="btn-group-vertical" style="border-style:none" role="group" aria-label="Vertical button group">
+                            <a class="btn btn-primary mb-1" asp-controller="Product" asp-action="Get" asp-route-id="@pro.Id" asp-fragment="ImagesPortion">@localizer["More Details"]</a><br><br>
+                            <a class="btn btn-warning mb-1" asp-controller="Product" asp-action="Update" asp-route-id="@pro.Id">@localizer["Update Product"]</a><br><br>
+                            <a class="btn btn-danger mb-1" asp-controller="Product" asp-action="ConfirmDelete" asp-route-id="@pro.Id" asp-route-Title="@pro.Name">@localizer["Delete"]</a>
+                        </div>
+           </div>
+           </div>
+            </tbody>
+                         
+           
+                  
+           
+            
+            
+                
+            
+            </table>
+            
+           }
+</body>
+
+
+
+  @Html.PagedListPager(Model, pageIndex => Url.Action("GetAllProduct", new { pageIndex  }))
+
+  
+    
